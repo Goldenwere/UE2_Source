@@ -1,0 +1,56 @@
+==================================================
+-------------------------
+Version 1.181226.20183.01.01
+-------------------------
+Description
+	This version focused on creating a basic scene for development testing, implementing basic entity AI (both a tracking entity and a following entity), implementing gun firing, and basic decreasing of entity and player health. A developer's console has been created as well for future development purposes.
+Tasks Completed
+	Create demo scene
+	Create weapon class
+	Create pistol class
+	Test pistol firing mechanism
+	Create entity class
+	Create RFTO class
+	Test RTFO receiving damage
+	Create player class
+	Implement sight cone for entity
+	Test player receiving damage
+	Implement / Test turret object tracking player
+	Implement / Test turret only tracking player if in range/in sight cone
+	Implement weapon fire rate (pistol only can fire on ButtonDown and only if timer is greater than fire rate)
+	Implement ammo (pistol can only fire if enough ammo present)
+	Implement entity fire rate (changes how sight cone works)
+	Implement entity that follows player (only in range/in sight cone) and does damage
+	Fully create demo scene testing these implementations on a larger scale
+	Implement particle/sound effects, distinction materials on entities and gun
+	Create development console (takes in commands, splits strings, etc.)
+-------------------------
+Class Changes (does not include third party assets)
+Added Classes
+	DevelopersConsole
+	Weapon
+	Pistol
+	PistolParticleOut
+	PlayerManager
+	Entity
+	EntitySeekCollision
+	PHE
+	RFTO
+Changed Classes
+	N/A
+Removed Classes
+	N/A
+-------------------------
+Third Party Asset Changes (does not include non-implemented, such as Advertising, In-App Purchases, TextMeshPro, etc.)
+Added Packages
+	Post-Processing
+	Analytics Library
+	High Definition RP
+	ProCore (ProBuild, ProGrids, PolyBrush)
+	Standard Assets
+Updated/Changed Packages
+	N/A
+Removed Packages
+	N/A
+-------------------------
+==================================================

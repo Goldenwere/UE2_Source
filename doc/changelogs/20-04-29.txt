@@ -1,0 +1,420 @@
+==================================================
+-------------------------
+Version 1.20193.04.02
+-------------------------
+Description
+	This version focused on UI feedback and additional interactable object implementation.
+Tasks Completed
+	Implement shield, armor, stamina
+	Implement status-effects' modifiers
+	Implement modifiers for projectile-based entity weapons
+	Improve UI slider animations
+	Fix bouncy player controller bug
+	Fix long-distance UI interaction bug
+	Implement/add set, getself, and setself commands
+Development Period
+	20-04-24 TO 20-04-29
+-------------------------
+Class Changes (does not include third party assets)
+* - denotes added methods/variables
+^ - denotes deleted methods/variables
+Added Class Files
+	None
+Changed Class Files
+	DevConsole*
+	GameHUD*
+	GameInterface
+	PlayerController*
+	PlayerStats*
+	Weapon^(only unused private OnEnable, OnDisable, and gState removed)
+Removed Class Files
+	None
+-------------------------
+Third Party Asset Changes (does not include non-implemented)
+Added Packages / Code
+	None
+Updated/Changed Packages
+	None
+Removed Packages
+	None
+-------------------------
+==================================================
+
+
+
+==================================================
+-------------------------
+Version 1.20193.04.01
+-------------------------
+Description
+	This version focused on UI feedback and additional interactable object implementation.
+Tasks Completed
+	Implement repair objects
+	UI cooldowns
+	Objectives contribute to experience
+	Sound feedback from world UI
+	Implement healing
+	Weapon equip/recoil animation
+-------------------------
+Class Changes (does not include third party assets)
+Added Class Files
+	GameConstants
+	RepairableObject
+	StatReplenishStation
+Changed Class Files
+	Enumerations
+	GameInterface
+	InteractableObject
+	PlayerController
+	PlayerStats
+	PlayerUpgradeData
+	StoreItem
+	Weapon
+	WeaponController
+Removed Class Files
+	None
+-------------------------
+Third Party Asset Changes (does not include non-implemented)
+Added Packages / Code
+	None
+Updated/Changed Packages
+	None
+Removed Packages
+	None
+-------------------------
+==================================================
+
+
+==================================================
+-------------------------
+Version 1.20193.04.00
+-------------------------
+Description
+	This version focused on creating an improved prototype both presentationally and under-the-hood.
+Tasks Completed
+	Re-wrote entire code base
+	Edited and re-exported most models
+	Added numerous models
+	Created new station level scene
+	Created new menu scene
+	Implemented new UI
+-------------------------
+Class Changes (does not include third party assets)
+Added Class Files
+    [Character]
+        Entity
+        ICharacter
+        MobileEntity
+        PlayerController
+        PlayerStats
+        SendDamageUpward
+        StationaryEntity
+    [Core]
+        Enumerations
+        Extensions
+        GameEvents
+    [Data]
+        PlayerLocationData
+        PlayerUpgradeData
+    [Obj]
+        Door
+        ParticleDestroyer
+        ReferenceToParent
+    [UI]
+        DevConsole
+        GameHUD
+        GameInterface
+        InteractableObject
+        MenuHandler
+        ObjectiveBasedObject
+        PlayerTargetting
+        StoreItem
+    [Util]
+        PlayerSpawner
+    [Weaponry]
+        Weapon
+        WeaponController
+Changed Class Files
+	Not applicable
+Removed Class Files
+    (All)
+-------------------------
+Third Party Asset Changes (does not include non-implemented)
+Added Packages / Code
+	Post Processing (2.3.0)
+Updated/Changed Packages
+	ProBuilder (4.3.0-preview.1)
+	Vector Graphics (2.0.0-preview.11)
+	Core RP Library (7.1.8)
+Removed Packages
+	HDRP (6.9.0)
+-------------------------
+==================================================
+
+
+==================================================
+-------------------------
+Version 1.20192.03.02
+-------------------------
+Description
+	This version focused on improving entity AI
+Tasks Completed
+	Random entity movement
+	Entity awareness after being attacked
+	Entity semi-awareness (further distance than full awareness)
+	Speed differences between awareness and semi/wandering
+	Moved firing mechanisms to dedicated methods in entity AI
+	PHE now faces toward player better, leading to a much higher success rate of hits/damage
+	PHE now 80% of the time prefers firing from different positions rather than directly going toward player
+	Changed PHE firing sound
+	Halved base entity reaction time (0.1 to 0.05, the number multiplied by player distance)
+	PHE firing no longer depends on isFollowing (which caused short pauses every time UpdateDestination needed to be called) - now depends on new lost track timer / delay
+	Changed some PHE AI code to fix issues that arose mixing existing behavor with added behavor
+	Implemented new crosshair, change color when hovering over entity
+	Fixed a bug with target-HUD (raycast did forward of player object, which always faced horizontally outward, did not take camera up-down into account)
+	Fixed doors not opening for entities (added kinematic rigidbodies to parents/set box colliders to triggers/tagged all child objects as Entity)
+	Created the UpgradeConstants struct to hold upgrade value constants
+	Made a public setter for player max health to demonstrate upgrades
+	Created UpgradeButton to handle upgrade UI and messaging the upgrade system
+	Created UpgradeManager to handle actual upgrades
+	Created SaveManager as a placeholder so that the upgrade system is prepared to refer to it and use it; doesn't do any saving itself yet
+	Added sound to door
+	Updated entity sounds, switched them to Effects audio master output
+	Added L_S to splash logos, added cursor and icon
+	Added particle effects to entity firing mechanisms
+-------------------------
+Class Changes (does not include third party assets)
+Added Classes
+	UpgradeConstants
+	UpgradeManager
+	UpgradeButton
+	SaveManager
+Changed Classes
+	Entity
+	SCCE
+	RER
+	PHE
+	ODE
+	FFP
+	RFTO
+Removed Classes
+	N/A
+-------------------------
+Third Party Asset Changes (does not include non-implemented)
+Added Packages / Code
+	Vector Graphics
+Updated/Changed Packages
+	N/A
+Removed Packages
+	N/A
+-------------------------
+==================================================
+
+
+
+==================================================
+-------------------------
+Version 1.20192.03.01
+-------------------------
+Description
+	This version focused on implementing the remaining entity AI (besides more complex entity ideas such as spider bot) and improving combat as well as creating a full station level
+Tasks Completed
+	Made entity sight cone larger
+	Created enum for status effects
+	Removed unused `using` keyword references
+	Created enum for entity attack modifiers
+	Changed how damage is done to player with modifiers (passes through modifiers rather than hard-coded damage that cannot be determined by player in the first place)
+	Implemented status effect iterative damage to player
+	Implemented ways to handle status effects on HUD
+	Added constant, follow, and idle animations to RER
+	Implemented FFP
+	Moved shotSource and shotParticle from Entity parent class to appropriate RFTO and PHE classes
+	Implemented SCCE
+	Implemented ODE
+	Unity upgrade to 2019.3
+	Implemented repair mechanism
+	Created new testing scene (testing baked lighting and new HDRP post-processing)
+	Created working doors
+	Finished entire hangar-level
+	Created force field shader
+	Implemented objective mechanism and utilized repair mechanism to assist
+	Added entities to station level (hand placed)
+	Deprecated part of restart code (the part that number-of-entities affected)
+	Made entities contribute to exp
+-------------------------
+Class Changes (does not include third party assets)
+Added Classes
+	RER
+	FFP
+	SCCE
+	ODE
+	RepairInterface
+	Trigger_Door
+	PrimaryObjectiveTrigger
+Changed Classes
+	RFTO
+	PHE
+	PlayerManager
+	HUDManager
+	IndevRestart
+Removed Classes
+	N/A
+-------------------------
+Third Party Asset Changes (does not include non-implemented)
+Added Packages / Code
+	N/A
+Updated/Changed Packages
+	HDRP (6.9.0)
+	Core RP Library (6.9.0)
+Removed Packages
+	N/A
+-------------------------
+==================================================
+
+
+
+==================================================
+-------------------------
+Version 1.20191.02.01
+-------------------------
+Description
+	This version focused on cleaning up some code, adding some more functions to entities, and adding some more UI elements
+Tasks Completed
+	Removed print() statements from multiple classes that no longer needed them
+	Implemented Entity reaction time depending on distance of player (near instantaneous when close, longer when player is further away)
+	Created basic HUD
+	Created target HUD
+	Implemented main menu/in-game quit menu
+	Entity friendly fire
+	Unity upgrade to 2019.1
+-------------------------
+Class Changes (does not include third party assets)
+Added Classes
+	N/A
+Changed Classes
+	Pistol
+	PlayerManager
+	RTFO
+	PHE
+Removed Classes
+	N/A
+-------------------------
+Third Party Asset Changes (does not include non-implemented)
+Added Packages / Code
+	N/A
+Updated/Changed Packages
+	N/A
+Removed Packages
+	N/A
+-------------------------
+==================================================
+
+
+
+==================================================
+-------------------------
+Version 1.20183.01.02
+-------------------------
+Description
+	This version focused on creating basic entity models for testing, implementing more entity AI logic, and implementing UI states.
+Tasks Completed
+	Added XML summaries to classes
+	Create models for the RFTO and PHE entities
+	Create sight cone model to use for sight collision
+	Change the entity firing location to base off of gameobject position (like with player) and test alternating shot locations
+	Change the requirement for NavMeshAgent to be in child classes of Entity rather than Entity itself
+	Implemented a way to restart the demo when killed/when entities killed
+	Implemented entity death and player death
+	Implemented pause option
+	Over-wrote MouseLook's behavior for cursor locking (changed FirstPersonController to remove reference to commented-out method) since it conflicts with own methods and future methods of handling the cursor (and other UI)
+	Set escape key to pause menu
+	Changed how DevelopersConsole is called (goes through HUDManager first)
+	Changed headings in all the classes
+	Implemented HUDManager
+	Implemented improved entity firing mechanism (based on ray)
+-------------------------
+Class Changes (does not include third party assets)
+Added Classes
+	IndevRestart
+	IndevPause
+Changed Classes
+	MouseLook
+	FirstPersonController
+	EntitySeekCollisionPHE
+	RTFO
+	PHE
+	Entity
+	PlayerManager
+	DevelopersConsole
+	Pistol (comments only)
+Removed Classes
+	N/A
+-------------------------
+Third Party Asset Changes (does not include non-implemented)
+Added Packages / Code
+	N/A
+Updated/Changed Packages
+	N/A
+Removed Packages
+	N/A
+-------------------------
+==================================================
+
+
+
+==================================================
+-------------------------
+Version 1.20183.01.01
+-------------------------
+Description
+	This version focused on creating a basic scene for development testing, implementing basic entity AI (both a tracking entity and a following entity), implementing gun firing, and basic decreasing of entity and player health. A developer's console has been created as well for future development purposes.
+Tasks Completed
+	Create demo scene
+	Create weapon class
+	Create pistol class
+	Test pistol firing mechanism
+	Create entity class
+	Create RFTO class
+	Test RTFO receiving damage
+	Create player class
+	Implement sight cone for entity
+	Test player receiving damage
+	Implement / Test turret object tracking player
+	Implement / Test turret only tracking player if in range/in sight cone
+	Implement weapon fire rate (pistol only can fire on ButtonDown and only if timer is greater than fire rate)
+	Implement ammo (pistol can only fire if enough ammo present)
+	Implement entity fire rate (changes how sight cone works)
+	Implement entity that follows player (only in range/in sight cone) and does damage
+	Fully create demo scene testing these implementations on a larger scale
+	Implement particle/sound effects, distinction materials on entities and gun
+	Create development console (takes in commands, splits strings, etc.)
+-------------------------
+Class Changes (does not include third party assets)
+Added Classes
+	DevelopersConsole
+	Weapon
+	Pistol
+	PistolParticleOut
+	PlayerManager
+	Entity
+	EntitySeekCollision
+	PHE
+	RFTO
+Changed Classes
+	N/A
+Removed Classes
+	N/A
+-------------------------
+Third Party Asset Changes (does not include non-implemented, such as Advertising, In-App Purchases, TextMeshPro, etc.)
+Added Packages
+	Post-Processing
+	Analytics Library
+	High Definition RP
+	ProCore (ProBuild, ProGrids, PolyBrush)
+	Standard Assets
+Updated/Changed Packages
+	N/A
+Removed Packages
+	N/A
+-------------------------
+==================================================
